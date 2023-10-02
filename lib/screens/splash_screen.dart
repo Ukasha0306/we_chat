@@ -12,27 +12,30 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     // exist full screen
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+    SystemChrome.setSystemUIOverlayStyle( const SystemUiOverlayStyle(
+         systemNavigationBarColor: Colors.white,
+         systemNavigationBarIconBrightness: Brightness.dark,
+        statusBarColor: Colors.white));
 
-
-    if(FirebaseAuth.instance.currentUser != null){
+    FirebaseAuth auth = FirebaseAuth.instance;
+    if (auth.currentUser != null) {
       Future.delayed(const Duration(seconds: 3), () {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const HomeScreen()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()));
+      });
+    } else {
+      Future.delayed(const Duration(seconds: 3), () {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const LoginScreen()));
       });
     }
-    else{
-      Future.delayed(const Duration(seconds: 3), () {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const LoginScreen()));
-      });
-    }
-
-
   }
 
   @override

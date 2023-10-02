@@ -1,13 +1,13 @@
 class ChatUser {
-  late final String id;
-  late final String name;
-  late final String about;
-  late final String image;
-  late final String pushToken;
-  late final String createdAt;
-  late final bool isOnline;
-  late final String lastActive;
-  late final String email;
+  late String id;
+  late String name;
+  late String about;
+  late String image;
+  late String pushToken;
+  late String createdAt;
+  late bool isOnline;
+  late String lastActive;
+  late String email;
 
   ChatUser({
     required this.email,
@@ -19,6 +19,7 @@ class ChatUser {
     required this.isOnline,
     required this.lastActive,
     required this.pushToken,
+
   });
 
   //  from json data to dart object
@@ -31,7 +32,8 @@ class ChatUser {
     createdAt = json['createdAt'] ?? '';
     lastActive = json['lastActive'] ?? '';
     pushToken = json['pushToken'] ?? '';
-    isOnline = json['isOnline'] ?? false ;
+    isOnline = json['isOnline'] ?? false;
+
   }
 
   // dart object to json data
@@ -47,6 +49,7 @@ class ChatUser {
     data['lastActive'] = lastActive;
     data['pushToken'] = pushToken;
     data['isOnline'] = isOnline;
+
 
     return data;
   }
